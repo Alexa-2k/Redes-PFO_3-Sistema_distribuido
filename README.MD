@@ -32,6 +32,7 @@ Este proyecto corresponde a la Práctica Formativa Obligatoria 3, donde el objet
 ---
 
 
+## Arquitectura distribuida Cliente–Servidor con balanceo de carga y procesamiento asíncrono
 ## 1. Diagrama de la Arquitectura
 
 Se diseñó un diagrama de arquitectura distribuida que incluye los siguientes componentes, según lo solicitado en la consigna:
@@ -44,7 +45,25 @@ Se diseñó un diagrama de arquitectura distribuida que incluye los siguientes c
 
 ![Diagrama de Arquitectura Distribuida](./capturas/01-esquema.png)
 
+
+### Descripción general
+El sistema se diseñó bajo una **arquitectura distribuida orientada a tareas**, donde múltiples clientes (web y móvil) envían solicitudes mediante **sockets**.  
+Un **balanceador de carga** (Nginx o HAProxy) distribuye las conexiones entre varios **servidores de aplicación (API Gateway)**, que a su vez colocan las tareas en una **cola de mensajes (RabbitMQ)** para su procesamiento asíncrono.
+
+Las tareas en cola son consumidas por un conjunto de **servidores de procesamiento (workers)**, cada uno con su propio **pool de hilos** para ejecutar múltiples trabajos en paralelo.  
+Los resultados se almacenan en un **sistema de almacenamiento distribuido**, compuesto por una base de datos relacional (**PostgreSQL**) y un sistema de archivos en la nube (**S3 / MinIO**).
+
 ---
+
+### Flujo de ejecución
+1. El cliente envía una tarea mediante un socket.  
+2. El balanceador distribuye la solicitud entre los servidores API.  
+3. El servidor coloca la tarea en la cola de RabbitMQ.  
+4. Los workers consumen las tareas y las procesan.  
+5. Los resultados se guardan en PostgreSQL o en S3/MinIO.
+
+---
+
 
 ## 2. Implementación en Python (Sockets)
 
