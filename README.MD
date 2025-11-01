@@ -62,6 +62,8 @@ Los resultados se almacenan en un **sistema de almacenamiento distribuido**, com
 4. Los workers consumen las tareas y las procesan.  
 5. Los resultados se guardan en PostgreSQL o en S3/MinIO.
 
+![Flujo de ejecución](./capturas/01b-flujo.png)
+
 ---
 
 
@@ -97,6 +99,7 @@ python cliente.py
 
 ```
 
+
 ![Iniciar servidor y cliente](./capturas/02-servidor_y_cliente_1.png)
 
 **3. Ejecutar tareas**
@@ -104,16 +107,22 @@ python cliente.py
 El script pedirá que se introduzca una tarea.
 
 Escribir la tarea y presionar Enter.
+
+
 ![Primera tarea](./capturas/03a-primera_tarea.png)
 
 El cliente enviará la tarea al servidor y esperará la respuesta.
 
 Se pueden ejecutar múltiples instancias del cliente al mismo tiempo para demostrar cómo el servidor las maneja en hilos separados.
+
+
 ![Dos tareas](./capturas/03b-dos_tareas.png)
 
 ### Vistas del servidor y clientes
 
+
 ![Vista servidor](./capturas/05-ma_tareas-vista_servidor.png)
+
 
 ![vista clientes](./capturas/04-más_%20tareas-Vista_clientes.png)
 

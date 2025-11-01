@@ -1,0 +1,4 @@
+Diagrama, código, capturas y explicación en el repositorio: 
+
+
+https://github.com/Alexa-2k/Redes-PFO_3-Sistema_distribuido
