@@ -43,8 +43,6 @@ Se diseñó un diagrama de arquitectura distribuida que incluye los siguientes c
 * **Sistema de Colas:** (RabbitMQ)
 * **Almacenamiento Distribuido:** (PostgreSQL y S3)
 
-![Diagrama de Arquitectura Distribuida](./capturas/01-esquema.png)
-
 
 ### Descripción general
 El sistema se diseñó bajo una **arquitectura distribuida orientada a tareas**, donde múltiples clientes (web y móvil) envían solicitudes mediante **sockets**.  
